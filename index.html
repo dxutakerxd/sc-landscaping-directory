@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI-optimized directory for South Carolina landscapers. Get more leads with ChatGPT and Google AI visibility.">
+  <title>AI-Powered SC Landscaping Directory</title>
+  <link href="/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-green-50 to-blue-50 font-sans">
+  <!-- Hero Section -->
+  <div class="min-h-screen flex flex-col items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1621362533308-2b0954f05cb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'); background-color: #f0f4f8;">
+    <div class="max-w-4xl text-center p-8 bg-white bg-opacity-80 rounded-lg shadow-lg">
+      <h1 class="text-5xl font-bold text-green-800 mb-4">South Carolina Landscapers: Get More Leads with AI Search Visibility</h1>
+      <p class="text-xl text-gray-700 mb-4">Free listings boost your ranking in ChatGPT and Google AI searches—join in 30 seconds.</p>
+      <p class="text-sm text-gray-500 mb-6"><span id="spots-left">50</span> free listings left!</p>
+      <div class="flex justify-center gap-4 mb-6">
+        <button onclick="alert('Sweet! We’ll set up your free SC landscaping listing.')" class="p-4 bg-green-600 text-white rounded-md hover:bg-green-700 text-lg">Claim 1 of 50 Free Listings</button>
+        <a href="#demo" class="p-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-lg">See How It Works</a>
+      </div>
+      <p class="text-sm text-gray-500">Join 25+ SC landscapers. Premium boosts start at $7/mo for top AI spots.</p>
+    </div>
+  </div>
+
+  <!-- AI Visibility Score -->
+  <div class="py-12 bg-gray-100">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Check Your AI Visibility Score</h2>
+      <p class="text-lg text-gray-600 mb-6">Enter your business name to see how you rank in AI searches like “best landscaper in Columbia, SC.”</p>
+      <div class="flex justify-center">
+        <input type="text" placeholder="e.g., Palmetto Landscaping" class="p-3 rounded-l-md border border-gray-300 focus:outline-none w-64" id="biz-input">
+        <button onclick="simulateAIScore()" class="p-3 bg-blue-600 text-white rounded-r-md hover:bg-blue-700">See Score</button>
+      </div>
+      <p id="score-result" class="mt-4 text-lg text-gray-700"></p>
+    </div>
+  </div>
+
+  <!-- Demo Section -->
+  <div id="demo" class="py-12 bg-green-50">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">How It Works</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 bg-white rounded-lg shadow">
+          <h3 class="text-xl font-semibold text-green-800 mb-2">1. Sign Up Free</h3>
+          <p class="text-gray-600">Enter your details in 30 seconds to get a free AI-optimized listing.</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow">
+          <h3 class="text-xl font-semibold text-green-800 mb-2">2. AI Boost</h3>
+          <p class="text-gray-600">Our AI crafts schema and keywords to rank you higher in searches.</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow">
+          <h3 class="text-xl font-semibold text-green-800 mb-2">3. Get Leads</h3>
+          <p class="text-gray-600">Land more jobs as your listing shines in ChatGPT and Google AI.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="py-12 bg-green-50">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Trusted by SC Landscapers</h2>
+      <div class="flex justify-center mb-6">
+        <img src="https://via.placeholder.com/100?text=SC+Landscape+Assoc" alt="SC Landscape Association" class="h-12">
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 bg-white rounded-lg shadow">
+          <p class="text-gray-600 italic">“Landed a $3k irrigation job after ranking #1 in AI searches for Columbia!”</p>
+          <p class="mt-4 font-semibold text-green-800">Joe, Palmetto Landscaping</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow">
+          <p class="text-gray-600 italic">“Our hardscaping services now dominate ChatGPT queries—huge for SC!”</p>
+          <p class="mt-4 font-semibold text-green-800">Sarah, Lowcountry Greens</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Share CTA -->
+  <div class="py-12 bg-blue-100 text-center">
+    <h2 class="text-3xl font-bold text-gray-800 mb-4">Spread the Kackalacky Boost</h2>
+    <p class="text-lg text-gray-600 mb-6">Share your free listing with other SC landscapers and unlock a 30-day premium boost!</p>
+    <button onclick="shareListing()" class="p-4 bg-green-600 text-white rounded-md hover:bg-green-700 text-lg">Share Now</button>
+  </div>
+
+  <script>
+    let spotsLeft = 50;
+    document.getElementById('spots-left').innerText = spotsLeft;
+
+    function simulateAIScore() {
+      try {
+        const bizName = document.getElementById('biz-input').value;
+        const score = bizName ? Math.floor(Math.random() * 30 + 50) : 20;
+        document.getElementById('score-result').innerText = bizName 
+          ? `${bizName}, your AI visibility score is ${score}/100. Join now to boost it to 90+!` 
+          : 'Please enter a business name.';
+      } catch (e) {
+        document.getElementById('score-result').innerText = 'Error calculating score. Try again!';
+      }
+    }
+
+    function shareListing() {
+      try {
+        const shareUrl = 'https://sc-landscaping-ai-v5.vercel.app';
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          alert('Link copied! Share with SC landscapers for a 30-day premium boost.');
+          spotsLeft = Math.max(1, spotsLeft - 1);
+          document.getElementById('spots-left').innerText = spotsLeft;
+        });
+      } catch (e) {
+        alert('Error sharing. Please try again later.');
+      }
+    }
+  </script>
+</body>
+</html>
