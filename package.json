@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx tailwindcss -i ./input.css -o ./public/tailwind.css --minify"
+    "build": "echo 'Build skipped, tailwind.css pre-generated'"
   },
   "keywords": [],
   "author": "",
