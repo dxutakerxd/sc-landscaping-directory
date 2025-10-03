@@ -82,14 +82,19 @@
   </div>
 
   <!-- Signup Popup -->
-  <div id="signupPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-    <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
-      <h3 class="text-2xl font-bold text-white mb-4">Get Started Free</h3>
-      <input type="email" placeholder="Your business email" class="w-full p-3 mb-4 rounded bg-gray-700 text-white border border-gray-600">
-      <button onclick="alert('Sweet! Your free SC listing is being set up.')" class="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700">Claim Your Spot</button>
-      <button onclick="hideSignupPopup()" class="mt-4 text-gray-400 hover:text-white">Close</button>
-    </div>
+<div id="signupPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+  <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
+    <h3 class="text-2xl font-bold text-white mb-4">Get Started Free</h3>
+    <form action="https://formspree.io/f/xgvnyjzq" method="POST">
+      <input type="email" name="email" placeholder="Your business email" class="w-full p-3 mb-4 rounded bg-gray-700 text-white border border-gray-600" required>
+      <input type="text" name="_gotcha" style="display:none" class="spam-trap">
+      <input type="hidden" name="_subject" value="New SC Landscaping Signup">
+      <input type="hidden" name="_next" value="https://sc-landscaping-directory.vercel.app/thanks.html">
+      <button type="submit" class="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700">Claim Your Spot</button>
+    </form>
+    <button onclick="hideSignupPopup()" class="mt-4 text-gray-400 hover:text-white">Close</button>
   </div>
+</div>
 
   <script>
     let spotsLeft = 50;
