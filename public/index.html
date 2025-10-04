@@ -85,7 +85,7 @@
 <div id="signupPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
   <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
     <h3 class="text-2xl font-bold text-white mb-4">Get Started Free</h3>
-    <form action="https://formspree.io/f/xgvnyjzq" method="POST">
+    <form id="signup-form">
       <input type="email" name="email" placeholder="Your business email" class="w-full p-3 mb-4 rounded bg-gray-700 text-white border border-gray-600" required>
       <input type="text" name="businessName" placeholder="Your Business Name" class="w-full p-3 mb-4 rounded bg-gray-700 text-white border border-gray-600" required>
       <input type="text" name="_gotcha" style="display:none" class="spam-trap">
@@ -98,9 +98,17 @@
 </div>
 
   <script>
+    // --- Configuration ---
+    const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL"; // <-- PASTE YOUR WEB APP URL HERE
+
+    // --- Popup and UI Functions ---
+    const spotsLeftEl = document.getElementById('spots-left');
+    const stickySpotsLeftEl = document.getElementById('sticky-spots-left');
     let spotsLeft = 50;
-    document.getElementById('spots-left').innerText = spotsLeft;
-    document.getElementById('sticky-spots-left').innerText = spotsLeft;
+    spotsLeftEl.innerText = spotsLeft;
+    if (stickySpotsLeftEl) {
+      stickySpotsLeftEl.innerText = spotsLeft;
+    }
 
     function showSignupPopup() {
       document.getElementById('signupPopup').classList.remove('hidden');
@@ -110,32 +118,40 @@
       document.getElementById('signupPopup').classList.add('hidden');
     }
 
-    function simulateAIScore() {
-      try {
-        const bizName = document.getElementById('biz-input').value;
-        const score = bizName ? Math.floor(Math.random() * 30 + 50) : 20;
-        document.getElementById('score-result').innerText = bizName 
-          ? `${bizName}, your AI visibility score is ${score}/100. Sign up to boost it!` 
-          : 'Please enter a business name.';
-      } catch (e) {
-        document.getElementById('score-result').innerText = 'Error calculating score.';
-      }
-    }
+    // --- New Form Submission Handler ---
+    const signupForm = document.getElementById('signup-form');
+    signupForm.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent default form submission
 
-    function shareListing() {
-      try {
-        const shareUrl = 'https://sc-landscaping-directory.vercel.app';
-        navigator.clipboard.writeText(shareUrl).then(() => {
-          alert('Link copied! Share for a 30-day premium boost.');
-          spotsLeft = Math.max(1, spotsLeft - 1);
-          document.getElementById('spots-left').innerText = spotsLeft;
-          document.getElementById('sticky-spots-left').innerText = spotsLeft;
-        });
-      } catch (e) {
-        alert('Error sharing. Try again.');
-      }
-    }
+      const submitButton = signupForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.innerHTML;
+      submitButton.disabled = true;
+      submitButton.innerHTML = 'Submitting...';
 
+      const formData = new FormData(signupForm);
+      const data = Object.fromEntries(formData.entries());
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Important for this type of request
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => {
+        // Note: 'no-cors' mode means we can't read the response, but the request is sent.
+        // We assume success and let the Apps Script handle the rest (email, Airtable).
+        signupForm.innerHTML = '<p class="text-white text-center">Thank you! Please check your email to complete your signup.</p>';
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        signupForm.innerHTML = '<p class="text-red-400 text-center">An error occurred. Please try again later.</p>';
+      });
+    });
+
+    // --- Other page scripts ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
