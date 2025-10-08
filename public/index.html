@@ -14,101 +14,120 @@
     .fade-in { animation: fadeIn 1s ease-in; }
   </style>
 </head>
-<body class="font-poppins text-gray-200">
-  <!-- Hero Section -->
-  <header class="hero-bg min-h-screen flex items-center justify-center text-center p-6 relative">
-    <div class="fade-in">
-      <h1 class="text-5xl md:text-6xl font-bold mb-4 text-white">Skyrocket Your SC Landscaping Leads with AI</h1>
-      <p class="text-xl md:text-2xl mb-6">Sign up free + get a 30-day boost to dominate ChatGPT and Google AI searches.</p>
-      <p class="text-lg mb-6"><span id="spots-left" class="text-yellow-400">50</span> spots left—claim yours now!</p>
-      <button onclick="showSignupPopup()" class="cta-hover bg-green-600 text-white p-4 rounded-lg text-lg md:text-xl font-semibold">Get Started Free</button>
-    </div>
-    <div class="absolute bottom-4 w-full">
-      <a href="#features" class="text-white hover:text-yellow-400">Explore Features ↓</a>
-    </div>
+<body class="bg-slate-50 font-poppins text-slate-800">
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-20">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+      <div class="font-bold text-2xl text-green-700">SC Landscaping</div>
+      <div>
+        <a href="#features" class="text-slate-600 hover:text-green-700 px-3 py-2 rounded-md text-sm font-medium">Features</a>
+        <a href="#testimonials" class="text-slate-600 hover:text-green-700 px-3 py-2 rounded-md text-sm font-medium">Testimonials</a>
+        <a href="/portal/dashboard" class="ml-4 inline-block bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors">Customer Portal</a>
+      </div>
+    </nav>
   </header>
 
-  <!-- Features Section -->
-  <section id="features" class="py-12 bg-gray-800">
-    <div class="max-w-4xl mx-auto text-center px-4">
-      <h2 class="text-4xl font-bold mb-8 text-white">How It Works</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-6 bg-gray-700 rounded-lg shadow-lg">
-          <h3 class="text-2xl font-semibold text-green-400 mb-2">1. Sign Up</h3>
-          <p class="text-gray-300">Join in seconds with a free AI-optimized listing.</p>
-        </div>
-        <div class="p-6 bg-gray-700 rounded-lg shadow-lg">
-          <h3 class="text-2xl font-semibold text-green-400 mb-2">2. AI Optimization</h3>
-          <p class="text-gray-300">Our AI boosts your ranking with smart keywords.</p>
-        </div>
-        <div class="p-6 bg-gray-700 rounded-lg shadow-lg">
-          <h3 class="text-2xl font-semibold text-green-400 mb-2">3. Land Leads</h3>
-          <p class="text-gray-300">Watch your business grow with AI-driven visibility.</p>
+  <!-- Hero Section -->
+  <main class="relative">
+    <section class="bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-4 leading-tight">Get More Landscaping Leads with AI</h1>
+        <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-3xl mx-auto">Our AI-powered directory helps South Carolina landscapers get discovered by customers on ChatGPT and Google. Sign up free to claim your spot.</p>
+        <button onclick="showSignupPopup()" class="bg-green-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition-transform hover:scale-105">Get Started Free</button>
+        <p class="text-sm text-slate-500 mt-4">Only <span id="spots-left" class="font-semibold text-green-600">50</span> spots remaining!</p>
+      </div>
+    </section>
+
+    <!-- Search Section -->
+    <section id="search" class="py-20 bg-slate-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-slate-900 mb-8">Find a Landscaper Near You</h2>
+        <div class="max-w-2xl mx-auto">
+          <input type="text" id="search-input" placeholder="Search by service (e.g., 'mowing') or name..." class="w-full p-4 rounded-lg border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none text-lg">
+          <div id="search-results" class="mt-6"></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Testimonials Section -->
-  <section class="py-12 bg-gray-900">
-    <div class="max-w-4xl mx-auto text-center px-4">
-      <h2 class="text-4xl font-bold mb-6 text-white">What SC Landscapers Say</h2>
-      <div class="carousel w-full overflow-hidden">
-        <div class="flex animate-scroll" style="animation: scroll 15s infinite linear;">
-          <div class="p-6 bg-gray-800 rounded-lg shadow-lg mx-2 min-w-[300px]">
-            <p class="text-gray-300 italic">“Landed a $3k job after hitting #1 in AI searches!”</p>
-            <p class="mt-4 font-semibold text-green-400">Joe, Palmetto Landscaping</p>
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-slate-100">
+      <div class="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">The Future of Local SEO is Here</h2>
+        <p class="text-lg text-slate-600 mb-12">How we help you stand out:</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-8 bg-white rounded-xl shadow-lg flex flex-col items-center">
+            <div class="bg-green-100 text-green-700 rounded-full p-3 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2">1. Free AI Listing</h3>
+            <p class="text-slate-600">Create a free listing that our AI optimizes for modern search engines like ChatGPT.</p>
           </div>
-          <div class="p-6 bg-gray-800 rounded-lg shadow-lg mx-2 min-w-[300px]">
-            <p class="text-gray-300 italic">“Boosted my irrigation leads with ChatGPT rankings!”</p>
-            <p class="mt-4 font-semibold text-green-400">Sarah, Lowcountry Greens</p>
+          <div class="p-8 bg-white rounded-xl shadow-lg flex flex-col items-center">
+            <div class="bg-green-100 text-green-700 rounded-full p-3 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2">2. Boost Visibility</h3>
+            <p class="text-slate-600">Upgrade to syndicate your profile to other directories and get advanced AI re-optimization.</p>
+          </div>
+          <div class="p-8 bg-white rounded-xl shadow-lg flex flex-col items-center">
+            <div class="bg-green-100 text-green-700 rounded-full p-3 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2">3. Get More Leads</h3>
+            <p class="text-slate-600">Attract more customers who are actively searching for your landscaping services online.</p>
           </div>
         </div>
       </div>
-      <p class="text-lg mt-4 text-gray-400">25+ SC landscapers trust us.</p>
-    </div>
-    <style>
-      .carousel .animate-scroll { display: flex; }
-      @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-    </style>
-  </section>
+    </section>
 
-  <!-- Sticky Signup Bar -->
-  <div class="fixed bottom-0 w-full bg-green-600 text-white p-4 text-center z-10 hidden md:block">
-    <p>Only <span id="sticky-spots-left">50</span> spots left! <button onclick="showSignupPopup()" class="ml-2 underline hover:text-yellow-400">Sign Up Now</button></p>
-  </div>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+      <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-12">Trusted by SC Landscapers</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="p-6 bg-slate-100 rounded-xl text-left">
+            <p class="text-slate-700 italic">“Landed a $3k job after hitting #1 in AI searches! This is a game-changer for getting seen by real customers.”</p>
+            <p class="mt-4 font-semibold text-green-700">Joe, Palmetto Landscaping</p>
+          </div>
+          <div class="p-6 bg-slate-100 rounded-xl text-left">
+            <p class="text-slate-700 italic">“My phone has been ringing more since I signed up. The AI boost really works for my irrigation services.”</p>
+            <p class="mt-4 font-semibold text-green-700">Sarah, Lowcountry Greens</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-800 text-white py-8">
+    <div class="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <p>&copy; 2025 SC Landscaping Directory. All rights reserved.</p>
+    </div>
+  </footer>
 
   <!-- Signup Popup -->
-<div id="signupPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-  <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
-    <h3 class="text-2xl font-bold text-white mb-4">Get Started Free</h3>
-    <form id="signup-form">
-      <input type="email" name="email" placeholder="Your business email" class="w-full p-3 mb-4 rounded bg-gray-700 text-white border border-gray-600" required>
-      <input type="text" name="businessName" placeholder="Your Business Name" class="w-full p-3 mb-4 rounded bg-gray-700 text-white border border-gray-600" required>
-      <input type="text" name="_gotcha" style="display:none" class="spam-trap">
-      <input type="hidden" name="_subject" value="New SC Landscaping Signup">
-      <input type="hidden" name="_next" value="https://sc-landscaping-directory.vercel.app/thanks.html">
-      <button type="submit" class="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700">Claim Your Spot</button>
-    </form>
-    <button onclick="hideSignupPopup()" class="mt-4 text-gray-400 hover:text-white">Close</button>
+  <div id="signupPopup" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center hidden z-30">
+    <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md m-4">
+      <h3 class="text-2xl font-bold text-slate-900 mb-4">Get Your Free AI-Powered Listing</h3>
+      <form id="signup-form">
+        <input type="email" name="email" placeholder="Your business email" class="w-full p-3 mb-4 rounded-md bg-slate-100 text-slate-800 border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none" required>
+        <input type="text" name="businessName" placeholder="Your Business Name" class="w-full p-3 mb-4 rounded-md bg-slate-100 text-slate-800 border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none" required>
+        <input type="text" name="_gotcha" style="display:none" class="spam-trap">
+        <input type="hidden" name="_subject" value="New SC Landscaping Signup">
+        <button type="submit" class="w-full bg-green-600 text-white p-3 rounded-md hover:bg-green-700 font-semibold">Claim Your Spot</button>
+      </form>
+      <button onclick="hideSignupPopup()" class="mt-4 text-sm text-slate-500 hover:text-slate-700 w-full">Close</button>
+    </div>
   </div>
-</div>
 
   <script>
     // --- Configuration ---
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxZ4FGvX4pxKCrNzuPhzMePJHNE8tTG3B08L2AIbhGS8KbqVQsEvi41x6qkJGGwVaZVsg/exec"; // <-- PASTE YOUR WEB APP URL HERE
+    const API_URL = "/api/signup-lead";
 
-    // --- Popup and UI Functions ---
+    // --- UI Functions ---
     const spotsLeftEl = document.getElementById('spots-left');
-    const stickySpotsLeftEl = document.getElementById('sticky-spots-left');
     let spotsLeft = 50;
     spotsLeftEl.innerText = spotsLeft;
-    if (stickySpotsLeftEl) {
-      stickySpotsLeftEl.innerText = spotsLeft;
-    }
 
     function showSignupPopup() {
       document.getElementById('signupPopup').classList.remove('hidden');
@@ -118,46 +137,114 @@
       document.getElementById('signupPopup').classList.add('hidden');
     }
 
-    // --- New Form Submission Handler ---
+    // --- Form Submission Handler ---
     const signupForm = document.getElementById('signup-form');
     signupForm.addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent default form submission
-
+      e.preventDefault();
       const submitButton = signupForm.querySelector('button[type="submit"]');
-      const originalButtonText = submitButton.innerHTML;
       submitButton.disabled = true;
       submitButton.innerHTML = 'Submitting...';
 
       const formData = new FormData(signupForm);
       const data = Object.fromEntries(formData.entries());
 
-      fetch(GOOGLE_SCRIPT_URL, {
+      fetch(API_URL, {
         method: 'POST',
-        mode: 'no-cors', // Important for this type of request
         cache: 'no-cache',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       })
-      .then(res => {
-        // Note: 'no-cors' mode means we can't read the response, but the request is sent.
-        // We assume success and let the Apps Script handle the rest (email, Airtable).
-        signupForm.innerHTML = '<p class="text-white text-center">Thank you! Please check your email to complete your signup.</p>';
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if(data.success) {
+          signupForm.innerHTML = '<p class="text-slate-800 text-center">Thank you! Please check your email to complete your signup.</p>';
+        } else {
+          throw new Error('Submission was not successful');
+        }
       })
       .catch(error => {
         console.error('Error:', error);
-        signupForm.innerHTML = '<p class="text-red-400 text-center">An error occurred. Please try again later.</p>';
+        signupForm.innerHTML = '<p class="text-red-500 text-center">An error occurred. Please try again later.</p>';
       });
     });
 
-    // --- Other page scripts ---
+    // --- Smooth Scrolling ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
       });
     });
+
+    // --- Dynamic Search --- 
+    const searchInput = document.getElementById('search-input');
+    const resultsContainer = document.getElementById('search-results');
+
+    const debounce = (func, delay) => {
+      let timeoutId;
+      return (...args) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          func.apply(this, args);
+        }, delay);
+      };
+    };
+
+    const performSearch = (query) => {
+      const lowerCaseQuery = query.toLowerCase();
+
+      if (query.length < 2) {
+        resultsContainer.innerHTML = '';
+        return;
+      }
+
+      resultsContainer.innerHTML = '<p class="text-center text-slate-500">Searching...</p>';
+
+      // --- MOCK DATA FOR UI TESTING ---
+      const mockData = [
+        {
+          businessName: 'Palmetto Greenscapes',
+          services: 'Lawn mowing, garden design, seasonal clean-up, irrigation repair'
+        },
+        {
+          businessName: 'Lowcountry Lawns',
+          services: 'Sod installation, aeration, fertilization, weed control'
+        },
+        {
+          businessName: 'Charleston Tree & Turf',
+          services: 'Tree trimming, stump grinding, turf management, pest control'
+        }
+      ];
+
+      // Simulate network delay
+      setTimeout(() => {
+        const filteredResults = mockData.filter(result => 
+          result.businessName.toLowerCase().includes(lowerCaseQuery) || 
+          result.services.toLowerCase().includes(lowerCaseQuery)
+        );
+
+        if (filteredResults.length > 0) {
+          resultsContainer.innerHTML = filteredResults.map(result => `
+            <div class="bg-white p-6 rounded-lg shadow-md mb-4">
+              <h3 class="text-xl font-bold text-slate-900">${result.businessName}</h3>
+              <p class="text-slate-600 mt-2"><strong>Services:</strong> ${result.services}</p>
+            </div>
+          `).join('');
+        } else {
+          resultsContainer.innerHTML = '<p class="text-center text-slate-500">No results found.</p>';
+        }
+      }, 500);
+    };
+
+    searchInput.addEventListener('input', debounce((e) => {
+      performSearch(e.target.value);
+    }, 300));
+
   </script>
 </body>
 </html>
