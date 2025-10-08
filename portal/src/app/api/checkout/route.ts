@@ -1,13 +1,21 @@
-import { getAuth, currentUser } from '@clerk/nextjs/server';
+import { getAuth } from '@clerk/nextjs/server';
 import { NextRequest, NextResponse } from 'next/server';
-import { stripe } from '@/lib/stripe';
-import { absoluteUrl } from '@/lib/utils';
+// import { stripe } from '@/lib/stripe';
+// import { absoluteUrl } from '@/lib/utils';
 
-const dashboardUrl = absoluteUrl('/dashboard');
+// const dashboardUrl = absoluteUrl('/dashboard');
 
 export async function POST(req: NextRequest) {
-  // Use the reliable getAuth(req) instead of auth()
+  // The logic for this route is temporarily disabled until Stripe is fully configured.
   const { userId } = getAuth(req);
+  if (!userId) {
+    return new NextResponse('Unauthorized', { status: 401 });
+  }
+
+  // Return a placeholder response
+  return new NextResponse(JSON.stringify({ message: 'This endpoint is not yet configured.' }));
+
+  /*
   const user = await currentUser();
 
   if (!userId || !user) {
@@ -53,4 +61,5 @@ export async function POST(req: NextRequest) {
   });
 
   return new NextResponse(JSON.stringify({ url: stripeSession.url }));
+  */
 }
