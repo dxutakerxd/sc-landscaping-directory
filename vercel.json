@@ -1,13 +1,8 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "portal/next.config.js",
-      "use": "@vercel/next",
-      "config": { "distDir": ".next" }
+      "use": "@vercel/next"
     }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/portal/$1" }
   ]
 }
