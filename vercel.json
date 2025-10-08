@@ -1,8 +1,4 @@
 {
-  "builds": [
-    {
-      "src": "portal/next.config.ts",
-      "use": "@vercel/next"
-    }
-  ]
+  "installCommand": "cd portal && pnpm install",
+  "buildCommand": "cd portal && pnpm build"
 }
