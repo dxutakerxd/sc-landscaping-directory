@@ -1,13 +1,16 @@
-import type { NextRequest } from 'next/server'
+import Stripe from 'stripe'
+import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
-import type Stripe from 'stripe'
 
-import base from '@/lib/airtable'
-import { stripe } from '@/lib/stripe'
+// import { stripe } from '@/lib/stripe'
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
+  // The logic for this route is temporarily disabled until Stripe is fully configured.
+  return new NextResponse(null, { status: 200 })
+
+  /*
   const body = await req.text()
-  const sig = req.headers.get('stripe-signature') as string
+  const sig = headers().get('Stripe-Signature') as string
 
   let event: Stripe.Event
 
@@ -17,17 +20,30 @@ export async function POST(req: NextRequest) {
     return new NextResponse(`Webhook Error: ${err.message}`, { status: 400 })
   }
 
-  // Handle the checkout.session.completed event
-  if (event.type === 'checkout.session.completed') {
-    const session = event.data.object as Stripe.Checkout.Session
-    const { airtableRecordId } = session.metadata!
+  const session = event.data.object as Stripe.Checkout.Session
 
-    // Update the Airtable record
-    await base('Listings').update(airtableRecordId, {
-      'Boost Status': 'Active',
-      Tier: 'Premium',
-    })
+  if (event.type === 'checkout.session.completed') {
+    // Retrieve the subscription details from Stripe.
+    const subscription = await stripe.subscriptions.retrieve(
+      session.subscription as string
+    )
+
+    // TODO: Update the user stripe into in your database.
+    // Since this is a webhook, you can't send a response to the user.
+    // You can use a database trigger or a serverless function to handle this.
+  }
+
+  if (event.type === 'invoice.payment_succeeded') {
+    // Retrieve the subscription details from Stripe.
+    const subscription = await stripe.subscriptions.retrieve(
+      session.subscription as string
+    )
+
+    // TODO: Update the user stripe into in your database.
+    // Since this is a webhook, you can't send a response to the user.
+    // You can use a database trigger or a serverless function to handle this.
   }
 
   return new NextResponse(null, { status: 200 })
+  */
 }
