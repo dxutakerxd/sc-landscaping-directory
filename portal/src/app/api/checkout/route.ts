@@ -1,39 +1,56 @@
-import { auth, currentUser } from '@clerk/nextjs/server'
-import type { NextRequest } from 'next/server'
-import { NextResponse } from 'next/server'
+import { getAuth, currentUser } from '@clerk/nextjs/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { stripe } from '@/lib/stripe';
+import { absoluteUrl } from '@/lib/utils';
 
-import { stripe } from '@/lib/stripe'
+const dashboardUrl = absoluteUrl('/dashboard');
 
 export async function POST(req: NextRequest) {
-  const { userId } = auth()
-  const user = await currentUser()
+  // Use the reliable getAuth(req) instead of auth()
+  const { userId } = getAuth(req);
+  const user = await currentUser();
 
   if (!userId || !user) {
-    return new NextResponse('Unauthorized', { status: 401 })
+    return new NextResponse('Unauthorized', { status: 401 });
   }
 
-  const { priceId, airtableRecordId } = await req.json()
-
-  if (!priceId || !airtableRecordId) {
-    return new NextResponse('Missing priceId or airtableRecordId', { status: 400 })
+  const userSubscription = {
+      isPro: false // Placeholder logic
   }
 
-  const checkoutSession = await stripe.checkout.sessions.create({
-    mode: 'subscription',
+  // If user is already on a pro plan, redirect to dashboard
+  if (userSubscription.isPro) {
+    return new NextResponse(JSON.stringify({ url: dashboardUrl }));
+  }
+
+  // If user is not on a pro plan, create a checkout session
+  const stripeSession = await stripe.checkout.sessions.create({
+    success_url: dashboardUrl,
+    cancel_url: dashboardUrl,
     payment_method_types: ['card'],
+    mode: 'subscription',
+    billing_address_collection: 'auto',
+    customer_email: user.emailAddresses[0].emailAddress,
     line_items: [
       {
-        price: priceId,
+        price_data: {
+          currency: 'USD',
+          product_data: {
+            name: 'Premium Tier',
+            description: 'Unlock all premium features'
+          },
+          unit_amount: 700, // $7.00
+          recurring: {
+            interval: 'month'
+          }
+        },
         quantity: 1,
-      },
+      }
     ],
-    success_url: `${process.env.NEXT_PUBLIC_URL}/dashboard?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${process.env.NEXT_PUBLIC_URL}/dashboard`,
     metadata: {
-      userId,
-      airtableRecordId,
-    },
-  })
+      userId: userId,
+    }
+  });
 
-  return NextResponse.json({ url: checkoutSession.url })
+  return new NextResponse(JSON.stringify({ url: stripeSession.url }));
 }
