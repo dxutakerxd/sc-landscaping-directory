@@ -23,15 +23,6 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body className={`${inter.variable} antialiased`}>
-          <header className="flex justify-end items-center p-4 gap-4 h-16 border-b">
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <a href="/dashboard" className="text-sm font-medium hover:underline">Dashboard</a>
-              <UserButton />
-            </SignedIn>
-          </header>
           <main>{children}</main>
           <Toaster />
         </body>

@@ -2,6 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+.gradient-bg {
+    background: linear-gradient(120deg, #f0f9ff 0%, #e0f2fe 100%);
+}
+.cta-button {
+    transition: all 0.3s ease;
+}
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.pricing-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+.pricing-card:hover {
+    transform: scale(1.05);
+    border-color: #3b82f6;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+}
+.pricing-card.popular {
+    border-color: #3b82f6;
+    border-width: 2px;
+}
+.faq-item summary {
+    cursor: pointer;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+.faq-item p {
+    padding-bottom: 1.5rem;
+}
+
 @config '../../tailwind.config.js';
 
 /*
